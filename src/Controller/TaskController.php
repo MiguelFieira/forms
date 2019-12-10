@@ -13,7 +13,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TaskController extends AbstractController
 {
-    public function new(Request $request)
+    /**
+     * @Route("/task", name="task")
+     */
+    public function index(Request $request)
     {
         $task = new Task();
 
@@ -35,7 +38,7 @@ class TaskController extends AbstractController
             // ... maybe do some form processing, like saving the Task and Tag objects
         }
 
-        return $this->render('task/new.html.twig', [
+        return $this->render('task/index.html.twig', [
             'form' => $form->createView(),
             'controller_name' => 'TaskController',
         ]);
